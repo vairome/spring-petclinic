@@ -30,8 +30,3 @@ EXPOSE 8080
 RUN chmod +x /app/target/spring-petclinic-3.0.0-SNAPSHOT.jar
 
 CMD ["java", "-jar", "/app/target/spring-petclinic-3.0.0-SNAPSHOT.jar"]
-# RUN ls /app/target/
-
-
-# CMD ["java", "-jar", "/app/target/*.jar"]
-

@@ -1,4 +1,4 @@
-name: CI/CD pack spring boot 
+name: CI/CD pack spring boot
 
 on:
   push:
@@ -34,10 +34,8 @@ jobs:
           username: ${{ secrets.DOCKER_USER }}
           password: ${{ secrets.DOCKER_SECRET }}
 
-      - name: Retag image LATEST with image id from the last build
-        run: docker tag ${{ steps.vars.outputs.image_id }} ${{ secrets.DOCKER_USER }}/${{ secrets.DOCKER_IMAGE_PACK_NAME }}:latest
-
       - name: Push image to Docker Hub
         run: |
-          docker push ${{ secrets.DOCKER_USER }}/${{ secrets.DOCKER_IMAGE_PACK_NAME }}:${{ github.sha }}
-          docker push ${{ secrets.DOCKER_USER }}/${{ secrets.DOCKER_IMAGE_PACK_NAME }}:latest
+          docker tag $IMAGE_NAME:latest ${{ secrets.DOCKERHUB_USERNAME }}/$IMAGE_NAME:latest
+          docker push ${{ secrets.DOCKERHUB_USERNAME }}/$IMAGE_NAME:latest
+          docker push ${{ secrets.DOCKERHUB_USERNAME }}/$IMAGE_NAME:${{ github.sha }}

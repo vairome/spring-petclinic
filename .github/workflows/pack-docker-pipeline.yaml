@@ -1,9 +1,9 @@
-name: Application image
+name: CI/CD pack spring boot 
 
 on:
   push:
     branches:
-      - 'feature/containers'
+      - 'main'
 
 env: 
   IMAGE_NAME: ${{ secrets.DOCKER_IMAGE_PACK_NAME }}
